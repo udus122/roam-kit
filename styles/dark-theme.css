@@ -1,105 +1,106 @@
+/* ==UserStyle==
+2
+@name           Roam Research Dark
+3
+@namespace      USO Archive
+4
+@author         vandermerwed
+5
+@description    `This theme has moved to <a href="https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=en" target="_blank" >Stylus</a>.Install Stylus for either <a href="https://addons.mozilla.org/en-US/firefox/addon/styl-us/" target="_blank">Firefox</a>, <a href="https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne" target="_blank">Chrome</a>, <a href="https://addons.opera.com/en-gb/extensions/details/stylus/" target="_blank">Opera</a> or <a href="https://cascadea.app/" target="_blank">Cascadea for Safari</a> and then click the following link:<a href="https://raw.githubusercontent.com/vandermerwed/Roam-Research-Dark/master/roam-research-dark.user.css" target="_blank">Install with Stylus</a>If you find bugs you can let me know on <a href="https://twitter.com/vandermerwed" target="_blank" >twitter</a> or <a href="https://github.com/vandermerwed/Roam-Research-Dark/issues" target="_blank">create an issue on Github</a>.`
+6
+@version        20200305.12.39
+7
+@license        CC0-1.0
+8
+@preprocessor   uso
+9
+==/UserStyle== */
+
 @-moz-document url-prefix("https://roamresearch.com/#/app/"),
 url-prefix("https://roamresearch.com/#/v8/")
 {
+  :root {
+    --primary-bg-color: #2f3437;
+    --scondary-bg-color: #182026;
+    --gray-bg-color: #ffffff0d;
+    --primary-color: #ffffffaa;
+    --secondary-color: #ffffff61;
+  }
   .roam-body-main {
-    background-color: #2f3437;
+    background-color: var(--primary-bg-color);
   }
   .roam-topbar,
   .rm-topbar {
-    background-color: #182026;
+    background-color: var(--scondary-bg-color);
   }
   .bp3-input {
-    background: rgba(255, 255, 255, 0.05);
-    color: #fff;
-  }
-  bp3-button {
-    background-color: #192026;
-  }
-  .bp3-button:not([class*="bp3-intent-"]) {
-    color: #abc1d2;
+    background: var(--gray-bg-color);
+    color: var(--primary-color);
   }
   .bp3-menu {
-    background-color: #4b5053 !important;
-    color: #ffffff !important;
+    background-color: var(--primary-bg-color);
+    color: var(--primary-color);
   }
-  .rm-search-path {
-    background-color: #4b5053 !important;
+  .roam-body .roam-app .rm-title-display {
+    color: var(--primary-color);
   }
   .roam-body .roam-app {
-    color: #ffffff;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--primary-color);
   }
   .rm-reference-item {
-    background-color: #121212;
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: var(--gray-bg-color);
   }
-  .rm-title-display {
-    color: #ffffff;
-    color: rgba(255, 255, 255, 0.87);
+
+  .check-container input ~ .checkmark {
+    background-color: var(--primary-color);
   }
-  h1,
-  h2,
-  h3 {
-    color: #ffffff !important;
-    color: rgba(255, 255, 255, 0.87) !important;
-  }
+  /*
   .check-container input:checked ~ .checkmark {
-    background-color: #ffffff;
-    background-color: rgba(230, 126, 34, 1);
+    background-color: var(--primary-color);
   }
-  .rm-page-ref,
-  .rm-page-ref-link-color,
+
+  .check-container input:checked ~ .checkmark::after {
+    border: solid var(--primary-bg-color);
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(40deg) scale(.8);
+  }
+*/
+  .rm-page-ref--link,
   a {
-    color: #00f2ff;
-    color: rgb(0, 255, 238);
-  }
-  a:focus,
-  a:hover {
-    color: #ffc107;
-    color: rgba(255, 152, 0, 0.87);
+    color: #00ffee;
   }
   .rm-page-ref--tag {
-    color: #ffffff;
-    color: rgba(255, 255, 255, 0.38);
+    color: var(--secondary-color);
   }
   .rm-page-ref--namespace {
     color: #139e27;
   }
-  .rm-zoom .rm-zoom-item {
-    color: #a7b1bc;
-  }
-  .block-highlight-yellow {
-    background-color: #795548;
-    background-color: rgba(121, 85, 72, 0.6);
-  }
   code {
-    background: #121212;
     background: rgba(18, 18, 18, 0.6);
     color: #ff5722;
-    border: 1px solid #000000;
     border: 1px solid rgba(18, 18, 18, 0.87);
   }
-  .bp3-elevation-3 {
-    background-color: #182026 !important;
-  }
   #right-sidebar {
-    background-color: #182026 !important;
+    background-color: var(--scondary-bg-color);
   }
   .roam-block > span > div {
-    background-color: #182026 !important;
+    background-color: var(--scondary-bg-color);
   }
-  .roam-block > span > div.rm-roam-css--inactive {
-    background-color: #f8d7da !important;
+  .roam-block > span > div.rm-roam-css--active,
+  .roam-block > span > div.rm-roam-js--active {
+    background-color: #fff3cd;
   }
-  .roam-block .rm-block-ref {
-    background-color: transparent !important;
+  .roam-block > span > div.rm-roam-css--inactive,
+  .roam-block > span > div.rm-roam-js--inactive {
+    background-color: #f8d7da;
   }
   .rm-block-ref:hover {
-    background-color: transparent !important;
-    border-bottom: 1px solid rgba(255, 152, 0, 1);
+    background-color: transparent;
   }
-  .rm-query-title {
-    background-color: #131619 !important;
+  .rm-query > .rm-query-title {
+    background-color: var(--scondary-bg-color);
     color: #ff9800;
     font-size: 0;
   }
