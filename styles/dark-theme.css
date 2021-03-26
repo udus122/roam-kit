@@ -25,6 +25,7 @@ url-prefix("https://roamresearch.com/#/v8/")
     --gray-bg-color: #ffffff0d;
     --primary-color: #ffffffaa;
     --secondary-color: #ffffff61;
+    --link-color: #00ffee;
   }
   .roam-body-main {
     background-color: var(--primary-bg-color);
@@ -41,8 +42,20 @@ url-prefix("https://roamresearch.com/#/v8/")
     background-color: var(--primary-bg-color);
     color: var(--primary-color);
   }
+  .bp3-popover-target > .bp3-button {
+    color: #5c7080;
+  }
   .roam-body .roam-app .rm-title-display {
     color: var(--primary-color);
+  }
+  .rm-title-textarea {
+    color: var(--primary-color);
+  }
+  .bp3-elevation-3 {
+    background-color: var(--primary-bg-color) !important;
+  }
+  .rm-autocomplete-result {
+    color: var(--link-color);
   }
   .roam-body .roam-app {
     color: var(--primary-color);
@@ -50,7 +63,6 @@ url-prefix("https://roamresearch.com/#/v8/")
   .rm-reference-item {
     background-color: var(--gray-bg-color);
   }
-
   .check-container input ~ .checkmark {
     background-color: var(--primary-color);
   }
@@ -69,7 +81,7 @@ url-prefix("https://roamresearch.com/#/v8/")
 */
   .rm-page-ref--link,
   a {
-    color: #00ffee;
+    color: var(--link-color);
   }
   .rm-page-ref--tag {
     color: var(--secondary-color);
@@ -85,6 +97,7 @@ url-prefix("https://roamresearch.com/#/v8/")
   #right-sidebar {
     background-color: var(--scondary-bg-color);
   }
+  /* ブロック要素の中の特殊オブジェクト(ポモドーロタイマーや文字数カウンターなど) */
   .roam-block > span > div {
     background-color: var(--scondary-bg-color);
   }
@@ -103,9 +116,6 @@ url-prefix("https://roamresearch.com/#/v8/")
     background-color: var(--scondary-bg-color);
     color: #ff9800;
     font-size: 0;
-  }
-  .rm-autocomplete-result {
-    color: #297bb7;
   }
   .rm-highlight {
     color: #333;
