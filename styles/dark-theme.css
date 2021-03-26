@@ -1,0 +1,115 @@
+@-moz-document url-prefix("https://roamresearch.com/#/app/"),
+url-prefix("https://roamresearch.com/#/v8/")
+{
+  .roam-body-main {
+    background-color: #2f3437;
+  }
+  .roam-topbar,
+  .rm-topbar {
+    background-color: #182026;
+  }
+  .bp3-input {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+  }
+  bp3-button {
+    background-color: #192026;
+  }
+  .bp3-button:not([class*="bp3-intent-"]) {
+    color: #abc1d2;
+  }
+  .bp3-menu {
+    background-color: #4b5053 !important;
+    color: #ffffff !important;
+  }
+  .rm-search-path {
+    background-color: #4b5053 !important;
+  }
+  .roam-body .roam-app {
+    color: #ffffff;
+    color: rgba(255, 255, 255, 0.6);
+  }
+  .rm-reference-item {
+    background-color: #121212;
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+  .rm-title-display {
+    color: #ffffff;
+    color: rgba(255, 255, 255, 0.87);
+  }
+  h1,
+  h2,
+  h3 {
+    color: #ffffff !important;
+    color: rgba(255, 255, 255, 0.87) !important;
+  }
+  .check-container input:checked ~ .checkmark {
+    background-color: #ffffff;
+    background-color: rgba(230, 126, 34, 1);
+  }
+  .rm-page-ref,
+  .rm-page-ref-link-color,
+  a {
+    color: #00f2ff;
+    color: rgb(0, 255, 238);
+  }
+  a:focus,
+  a:hover {
+    color: #ffc107;
+    color: rgba(255, 152, 0, 0.87);
+  }
+  .rm-page-ref--tag {
+    color: #ffffff;
+    color: rgba(255, 255, 255, 0.38);
+  }
+  .rm-page-ref--namespace {
+    color: #139e27;
+  }
+  .rm-zoom .rm-zoom-item {
+    color: #a7b1bc;
+  }
+  .block-highlight-yellow {
+    background-color: #795548;
+    background-color: rgba(121, 85, 72, 0.6);
+  }
+  code {
+    background: #121212;
+    background: rgba(18, 18, 18, 0.6);
+    color: #ff5722;
+    border: 1px solid #000000;
+    border: 1px solid rgba(18, 18, 18, 0.87);
+  }
+  .bp3-elevation-3 {
+    background-color: #182026 !important;
+  }
+  #right-sidebar {
+    background-color: #182026 !important;
+  }
+  .roam-block > span > div {
+    background-color: #182026 !important;
+  }
+  .roam-block > span > div.rm-roam-css--inactive {
+    background-color: #f8d7da !important;
+  }
+  .roam-block .rm-block-ref {
+    background-color: transparent !important;
+  }
+  .rm-block-ref:hover {
+    background-color: transparent !important;
+    border-bottom: 1px solid rgba(255, 152, 0, 1);
+  }
+  .rm-query-title {
+    background-color: #131619 !important;
+    color: #ff9800;
+    font-size: 0;
+  }
+  .rm-autocomplete-result {
+    color: #297bb7;
+  }
+  .rm-highlight {
+    color: #333;
+  }
+  .rm-bq {
+    background-color: #111;
+  }
+}
