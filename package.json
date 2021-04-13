@@ -1,0 +1,12 @@
+{
+  "name": "roam-kit",
+  "version": "0.0.1",
+  "description": "my roam utilities",
+  "repository": "https://github.com/yudai1202/roam-kit",
+  "author": "yudai1202 <u.yudai1202@gmail.com>",
+  "private": true,
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.2.4"
+  }
+}
