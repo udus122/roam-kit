@@ -40,8 +40,6 @@
     "Related:: ",
   ];
 
-  console.log(metadata);
-
   const res = [
     // clipboard text
     `[[Book/${title}]]`,
