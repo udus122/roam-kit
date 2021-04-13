@@ -1,6 +1,5 @@
 (async () => {
-  const putIndent = (s, n) => {
-    if (n === undefined) n = 2;
+  const putIndent = (s, n = 2) => {
     return `${" ".repeat(n)}${s}`;
   };
 
@@ -28,9 +27,9 @@
     })
     .filter((a) => a !== null);
 
-  const highlights = annotations
-    .map((a) => [putIndent(a.position), putIndent(a.highlight, 4)].join("\n"))
-    .join("\n");
+  const highlights = annotations.map((a) =>
+    [putIndent(a.highlight, 0), putIndent(a.position, 4)].join("\n")
+  );
 
   const metadata = [
     "Source:: ",
@@ -39,22 +38,18 @@
     "Accessed:: {{date}}",
     "Tags:: ",
     "Related:: ",
-  ]
-    .map((m) => putIndent(m, 2))
-    .join("\n");
+  ];
+
+  console.log(metadata);
 
   const res = [
     // clipboard text
     `[[Book/${title}]]`,
-    "  metadata:",
-    `    ${metadata}`,
-    "  ---",
-    `  ${highlights}`,
+    putIndent("metadata:", 2),
+    ...metadata.map((m) => putIndent(m, 4)),
+    putIndent("----", 2),
+    ...highlights.map((m) => putIndent(m, 2)),
   ].join("\n");
-
-  try {
-    await navigator.clipboard.writeText(res);
-  } catch (_) {
-    alert(res);
-  }
+  console.log(res);
+  navigator.clipboard.writeText(res);
 })();
