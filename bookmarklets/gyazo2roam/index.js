@@ -46,11 +46,12 @@
     .map((m) => `  ${m}`)
     .join("\n");
 
-  let res = [
+  const res = [
     `![Image from Gyazo](${imageLink})`,
     `  ${metadata}`,
     "  Text:",
     `    ${ocrText}`,
   ].join("\n");
+  console.log(res);
   navigator.clipboard.writeText(res);
 })();
