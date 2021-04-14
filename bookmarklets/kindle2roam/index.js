@@ -36,7 +36,7 @@
     `Author:: ${authors}`,
     "Published:: ",
     "Accessed:: {{date}}",
-    "Tags:: ",
+    "Tags:: #Book",
     "Related:: ",
   ];
 
