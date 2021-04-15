@@ -28,7 +28,7 @@
     .filter((a) => a !== null);
 
   const highlights = annotations.map((a) =>
-    [putIndent(a.highlight, 0), putIndent(a.position, 4)].join("\n")
+    [putIndent(`> ${a.highlight}`, 0), putIndent(a.position, 4)].join("\n")
   );
 
   const metadata = [
@@ -46,7 +46,8 @@
     putIndent("metadata:", 2),
     ...metadata.map((m) => putIndent(m, 4)),
     putIndent("----", 2),
-    ...highlights.map((m) => putIndent(m, 2)),
+    putIndent("highlights::", 2),
+    ...highlights.map((m) => putIndent(m, 4)),
   ].join("\n");
   console.log(res);
   navigator.clipboard.writeText(res);
