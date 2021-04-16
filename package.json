@@ -2,11 +2,18 @@
   "name": "roam-kit",
   "version": "0.0.1",
   "description": "my roam utilities",
+  "main": "src/index.js",
   "repository": "https://github.com/yudai1202/roam-kit",
   "author": "yudai1202 <u.yudai1202@gmail.com>",
   "private": true,
+  "scripts": {
+    "build": "webpack"
+  },
   "license": "MIT",
   "devDependencies": {
-    "typescript": "^4.2.4"
+    "ts-loader": "^8.1.0",
+    "typescript": "^4.2.4",
+    "webpack": "^5.33.2",
+    "webpack-cli": "^4.6.0"
   }
 }
