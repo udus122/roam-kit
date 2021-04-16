@@ -41,7 +41,7 @@ import { putIndent } from "../../libs";
   ];
 
   const res = [
-    `[[Book/${title}]]`,
+    `[[${title}]]`,
     putIndent("metadata:", 2),
     ...metadata.map((m) => putIndent(m, 4)),
     putIndent("----", 2),
