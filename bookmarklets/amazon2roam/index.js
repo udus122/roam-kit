@@ -30,7 +30,7 @@ const copyToClipboard = (text) => {
   document.body.removeChild(dummy);
 };
 
-await (async () => {
+(async () => {
   const source = location.href;
   const asin = document
     .querySelector('link[rel="canonical"]')
