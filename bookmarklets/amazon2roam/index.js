@@ -36,10 +36,8 @@ const copyToClipboard = (text) => {
     .querySelector('link[rel="canonical"]')
     .href.split("/")
     .pop();
-  console.log("isbn:", asin);
   const response = await fetch("https://api.openbd.jp/v1/get?isbn=" + asin);
   const [data] = await response.json();
-  console.log("data:", data);
   if (!data) {
     alert("版元ドットコムにデータがありませんでした。");
     return;
@@ -59,8 +57,8 @@ const copyToClipboard = (text) => {
         Contributor: contributors = [],
       },
       PublishingDetail: {
-        Publisher: { PublisherName: publisher = "" },
-        PublishingDate: [{ Date: publishingDate = "" }],
+        Publisher: { PublisherName: publisher = "" } = { PublisherName: "" },
+        PublishingDate: [{ Date: publishingDate = "" } = { Date: "" }],
       },
     },
   } = data;
@@ -75,10 +73,9 @@ const copyToClipboard = (text) => {
     putIndent(`Source:: ${source}`, 2),
     putIndent(`ISBN:: ${asin}`, 2),
     putIndent(`Authors::`, 2),
-    ...authorsInfo.map((m) => {
-      console.log("m:", m);
-      return [putIndent(`[[${m.name}]]`, 4), putIndent(m.bio, 6)].join("\n");
-    }),
+    ...authorsInfo.map((m) =>
+      [putIndent(`[[${m.name}]]`, 4), putIndent(m.bio, 6)].join("\n")
+    ),
     putIndent(`Publisher:: ${publisher}`, 2),
     putIndent(`Published:: [[${roamfy(toDate(publishingDate))}]]`, 2),
     putIndent(`Accessed:: [[${roamfy(new Date())}]]`, 2),
