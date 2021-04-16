@@ -47,20 +47,20 @@ const copyToClipboard = (text) => {
   const {
     onix: {
       CollateralDetail: {
-        TextContent: [{ Text: toc }],
+        TextContent: [{ Text: toc = "" }],
       },
       DescriptiveDetail: {
         TitleDetail: {
           TitleElement: {
-            TitleText: { content: title },
-            Subtitle: { content: subtitle },
+            TitleText: { content: title = "" } = { content: "" },
+            Subtitle: { content: subtitle = "" } = { content: "" },
           },
         },
-        Contributor: contributors,
+        Contributor: contributors = [],
       },
       PublishingDetail: {
-        Publisher: { PublisherName: publisher },
-        PublishingDate: [{ Date: publishingDate }],
+        Publisher: { PublisherName: publisher = "" },
+        PublishingDate: [{ Date: publishingDate = "" }],
       },
     },
   } = data;
@@ -71,14 +71,15 @@ const copyToClipboard = (text) => {
   }));
 
   const res = [
-    // roam format
     `[[Book/${title} ${subtitle}]]`,
     putIndent(`Source:: ${source}`, 2),
+    putIndent(`ISBN:: ${asin}`, 2),
     putIndent(`Authors::`, 2),
     ...authorsInfo.map((m) => {
       console.log("m:", m);
       return [putIndent(`[[${m.name}]]`, 4), putIndent(m.bio, 6)].join("\n");
     }),
+    putIndent(`Publisher:: ${publisher}`, 2),
     putIndent(`Published:: [[${roamfy(toDate(publishingDate))}]]`, 2),
     putIndent(`Accessed:: [[${roamfy(new Date())}]]`, 2),
     putIndent(`Tags:: #Book `, 2),
