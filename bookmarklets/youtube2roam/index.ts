@@ -1,17 +1,17 @@
 (function () {
   const fetchTranscriptElment = () =>
-    document.querySelectorAll(
+    document.querySelectorAll<HTMLDivElement>(
       "ytd-transcript-renderer ytd-transcript-body-renderer>div"
     );
 
-  const copyTranscript = (transcriptElement) => {
+  const copyTranscript = (transcriptElement: NodeListOf<HTMLElement>) => {
     const transcriptBody = Array.from(transcriptElement);
 
     const transcripts = transcriptBody.map((el) => {
       const row = Array.from(el.querySelectorAll("div")).slice(0, 2);
-      const timestamp = row[0].textContent.trim();
+      const timestamp = row[0].textContent?.trim();
       const transcript = row[1].textContent
-        .trim()
+        ?.trim()
         .replace(/(\r\n|\n|\r)/gm, "");
       return { timestamp, transcript };
     });
@@ -34,7 +34,9 @@
 
   // click menu button
   Array.from(
-    document.querySelectorAll(".ytd-video-primary-info-renderer button")
+    document.querySelectorAll<HTMLElement>(
+      ".ytd-video-primary-info-renderer button"
+    )
   )
     .slice(-1)[0]
     .click();
@@ -43,7 +45,7 @@
   const t = setInterval(() => {
     try {
       Array.from(
-        document.querySelectorAll(
+        document.querySelectorAll<HTMLElement>(
           "ytd-menu-popup-renderer paper-listbox ytd-menu-service-item-renderer"
         )
       )

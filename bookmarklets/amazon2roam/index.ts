@@ -1,41 +1,17 @@
-const putIndent = (s, n = 2) => {
-  return `${" ".repeat(n)}${s}`;
-};
-
-const roamfy = (d) => {
-  const ord = (n) =>
-    n +
-    (n > 0
-      ? ["th", "st", "nd", "rd"][(n > 3 && n < 21) || n % 10 > 3 ? 0 : n % 10]
-      : "");
-  const year = d.getFullYear();
-  const month = d.toLocaleString("en-us", { month: "long" });
-  const date = ord(d.getDate());
-  return `${month} ${date}, ${year}`;
-};
-
-const toDate = (YYYYMMDD) => {
-  const year = YYYYMMDD.substr(0, 4);
-  const month = YYYYMMDD.substr(4, 2);
-  const day = YYYYMMDD.substr(6, 2);
-  return new Date(year, month, day);
-};
-
-const copyToClipboard = (text) => {
-  const dummy = document.createElement("textarea");
-  document.body.appendChild(dummy);
-  dummy.value = text;
-  dummy.select();
-  document.execCommand("copy");
-  document.body.removeChild(dummy);
-};
+import { putIndent, roamfy, copyToClipboard } from "../../libs";
 
 (async () => {
-  const source = location.href;
-  const asin = document
-    .querySelector('link[rel="canonical"]')
-    .href.split("/")
-    .pop();
+  const toDate = (YYYYMMDD: string) => {
+    const year = Number(YYYYMMDD.substr(0, 4));
+    const month = Number(YYYYMMDD.substr(4, 2));
+    const day = Number(YYYYMMDD.substr(6, 2));
+    return new Date(year, month, day);
+  };
+
+  const canonicalUrl =
+    document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href ??
+    "";
+  const asin = canonicalUrl.split("/").pop();
   const response = await fetch("https://api.openbd.jp/v1/get?isbn=" + asin);
   const [data] = await response.json();
   if (!data) {
@@ -44,9 +20,7 @@ const copyToClipboard = (text) => {
   }
   const {
     onix: {
-      CollateralDetail: {
-        TextContent: [{ Text: toc = "" }],
-      },
+      CollateralDetail: { TextContent: bookInfoList },
       DescriptiveDetail: {
         TitleDetail: {
           TitleElement: {
@@ -63,17 +37,26 @@ const copyToClipboard = (text) => {
     },
   } = data;
 
-  const authorsInfo = contributors.map((m) => ({
-    name: m.PersonName.content,
-    bio: m.BiographicalNote,
-  }));
+  const isToc = (m: { TextType: string }) => m.TextType === "04";
+  const toc = bookInfoList.find(isToc)?.Text.split("\n") ?? [];
+  const bookDescriptions =
+    bookInfoList
+      ?.filter((m: any) => !isToc(m))
+      ?.map((m: { Text: string }) => m.Text) ?? [];
+
+  const authorsInfo = contributors.map(
+    (m: { PersonName: { content: string }; BiographicalNote: string }) => ({
+      name: m.PersonName.content ?? "",
+      bio: m.BiographicalNote ?? "",
+    })
+  );
 
   const res = [
     `[[Book/${title} ${subtitle}]]`,
-    putIndent(`Source:: ${source}`, 2),
+    putIndent(`Source:: ${canonicalUrl}`, 2),
     putIndent(`ISBN:: ${asin}`, 2),
     putIndent(`Authors::`, 2),
-    ...authorsInfo.map((m) =>
+    ...authorsInfo.map((m: { name: string; bio: string }) =>
       [putIndent(`[[${m.name}]]`, 4), putIndent(m.bio, 6)].join("\n")
     ),
     putIndent(`Publisher:: ${publisher}`, 2),
@@ -82,8 +65,10 @@ const copyToClipboard = (text) => {
     putIndent(`Tags:: #Book `, 2),
     putIndent(`Notes:: `, 2),
     putIndent(`Related:: `, 2),
-    putIndent(`Toc::`),
-    putIndent(toc, 4),
+    putIndent(`Toc::`, 2),
+    ...toc.map((m: string) => putIndent(m, 4)),
+    putIndent("Descriptions::", 2),
+    ...bookDescriptions.map((m: string) => [putIndent(m, 4)]),
   ].join("\n");
 
   copyToClipboard(res);
