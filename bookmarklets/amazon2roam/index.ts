@@ -47,7 +47,7 @@ import { putIndent, roamfy, copyToClipboard } from "../../libs";
   const authorsInfo = contributors.map(
     (m: { PersonName: { content: string }; BiographicalNote: string }) => ({
       name: m.PersonName.content ?? "",
-      bio: m.BiographicalNote ?? "",
+      bio: m.BiographicalNote?.replace("\n", " ") ?? "",
     })
   );
 
