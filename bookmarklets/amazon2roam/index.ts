@@ -53,22 +53,23 @@ import { putIndent, roamfy, copyToClipboard } from "../../libs";
 
   const res = [
     `[[Book/${title} ${subtitle}]]`,
-    putIndent(`Source:: ${canonicalUrl}`, 2),
-    putIndent(`ISBN:: ${asin}`, 2),
-    putIndent(`Authors::`, 2),
+    putIndent("metadata:", 4),
+    putIndent(`Source:: ${canonicalUrl}`, 4),
+    putIndent(`ISBN:: ${asin}`, 4),
+    putIndent(`Authors::`, 4),
     ...authorsInfo.map((m: { name: string; bio: string }) =>
-      [putIndent(`[[${m.name}]]`, 4), putIndent(m.bio, 6)].join("\n")
+      [putIndent(`[[${m.name}]]`, 6), putIndent(m.bio, 8)].join("\n")
     ),
-    putIndent(`Publisher:: ${publisher}`, 2),
-    putIndent(`Published:: [[${roamfy(toDate(publishingDate))}]]`, 2),
-    putIndent(`Accessed:: [[${roamfy(new Date())}]]`, 2),
-    putIndent(`Tags:: #Book `, 2),
-    putIndent(`Notes:: `, 2),
-    putIndent(`Related:: `, 2),
-    putIndent(`Toc::`, 2),
-    ...toc.map((m: string) => putIndent(m, 4)),
-    putIndent("Descriptions::", 2),
-    ...bookDescriptions.map((m: string) => [putIndent(m, 4)]),
+    putIndent(`Publisher:: ${publisher}`, 4),
+    putIndent(`Published:: [[${roamfy(toDate(publishingDate))}]]`, 4),
+    putIndent(`Accessed:: [[${roamfy(new Date())}]]`, 4),
+    putIndent(`Tags:: #Book `, 4),
+    putIndent(`Notes:: `, 4),
+    putIndent(`Related:: `, 4),
+    putIndent(`Toc::`, 4),
+    ...toc.map((m: string) => putIndent(m, 6)),
+    putIndent("Descriptions::", 4),
+    ...bookDescriptions.map((m: string) => [putIndent(m, 6)]),
   ].join("\n");
 
   copyToClipboard(res);
