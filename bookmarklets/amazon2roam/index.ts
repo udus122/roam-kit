@@ -53,7 +53,7 @@ import { putIndent, roamfy, copyToClipboard } from "../../libs";
 
   const res = [
     `[[Book/${title} ${subtitle}]]`,
-    putIndent("metadata:", 4),
+    putIndent("metadata:", 2),
     putIndent(`Source:: ${canonicalUrl}`, 4),
     putIndent(`ISBN:: ${asin}`, 4),
     putIndent(`Authors::`, 4),
