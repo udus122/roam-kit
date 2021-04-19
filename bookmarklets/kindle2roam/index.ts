@@ -1,4 +1,4 @@
-import { putIndent } from "../../libs";
+import { putIndent, copyToClipboard } from "../../libs";
 
 (async () => {
   const titleDOM = document.querySelector("#annotation-section h3");
@@ -49,5 +49,5 @@ import { putIndent } from "../../libs";
     ...highlights.map((m) => putIndent(m, 4)),
   ].join("\n");
   console.log(res);
-  navigator.clipboard.writeText(res);
+  copyToClipboard(res);
 })();
