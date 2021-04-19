@@ -1,3 +1,5 @@
+import { copyToClipboard } from "../../libs";
+
 (() => {
   let title = document.title;
   const replacedStrings: { [key: string]: string } = {
@@ -12,5 +14,6 @@
 
   const res = "[[Article/" + title + "]] [->](" + document.URL + ") ";
   console.log(res);
-  navigator.clipboard.writeText(res);
+
+  copyToClipboard(res);
 })();
