@@ -1,3 +1,5 @@
+import { copyToClipboard } from "../../libs/";
+
 (function () {
   const fetchTranscriptElment = () =>
     document.querySelectorAll<HTMLDivElement>(
@@ -22,7 +24,7 @@
       res += [`${t.timestamp}`, `  ${t.transcript}\n`].join("\n");
     });
 
-    navigator.clipboard.writeText(res);
+    copyToClipboard(res);
   };
 
   let transcriptElement = fetchTranscriptElment();

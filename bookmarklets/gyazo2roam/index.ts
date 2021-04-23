@@ -1,4 +1,4 @@
-import { roamfy, putIndent } from "../../libs";
+import { roamfy, putIndent, copyToClipboard } from "../../libs";
 
 (() => {
   const description = document
@@ -50,5 +50,5 @@ import { roamfy, putIndent } from "../../libs";
     putIndent(ocrText, 4),
   ].join("\n");
   console.log(res);
-  navigator.clipboard.writeText(res);
+  copyToClipboard(res);
 })();
