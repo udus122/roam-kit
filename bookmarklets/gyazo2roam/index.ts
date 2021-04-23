@@ -1,6 +1,9 @@
 import { roamfy, putIndent } from "../../libs";
 
 (() => {
+  const description = document
+    .querySelector<HTMLDivElement>(".description-box")
+    ?.innerText.replace("\n", " ");
   const capturedInfoDOM = document.querySelector(".captured-info");
   const capturedAtText = capturedInfoDOM
     ?.querySelector(".created-at-field a")
@@ -32,6 +35,7 @@ import { roamfy, putIndent } from "../../libs";
   const imageLink = document.querySelector("picture img")?.getAttribute("src");
 
   const metadata = [
+    `Descriptions:: ${description}`,
     `CapturedAt:: ${capturedAt}`,
     `App:: ${app}`,
     `Source:: ${source}`,
