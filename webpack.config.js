@@ -7,6 +7,7 @@ module.exports = {
     article2roam: "./bookmarklets/article2roam/index.ts",
     gyazo2roam: "./bookmarklets/gyazo2roam/index.ts",
     kindle2roam: "./bookmarklets/kindle2roam/index.ts",
+    highlight2roam: "./bookmarklets/kindle2roam/highlight2roam.ts",
     youtube2roam: "./bookmarklets/youtube2roam/index.ts",
   },
   output: {
