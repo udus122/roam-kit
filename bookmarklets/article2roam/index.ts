@@ -5,6 +5,7 @@
     "\\[": "［",
     "\\]": "］",
     "#": "♯",
+    "/": "／",
   };
   for (let key in replacedStrings) {
     title = title.replace(new RegExp(key, "g"), replacedStrings[key]);
