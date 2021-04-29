@@ -69,7 +69,7 @@ import { putIndent, roamfy, copyToClipboard } from "../../libs";
     putIndent(`Toc::`, 4),
     ...toc.map((m: string) => putIndent(m, 6)),
     putIndent("Descriptions::", 4),
-    ...bookDescriptions.map((m: string) => [putIndent(m, 6)]),
+    ...bookDescriptions.map((m: string) => putIndent(m, 6)),
   ].join("\n");
 
   copyToClipboard(res);
