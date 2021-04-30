@@ -38,7 +38,7 @@ import { putIndent, roamfy, copyToClipboard } from "../../libs";
   } = data;
 
   const isToc = (m: { TextType: string }) => m.TextType === "04";
-  const toc = bookInfoList.find(isToc)?.Text.split("\n") ?? [];
+  const toc = bookInfoList?.find(isToc)?.Text.split("\n") ?? [];
   const bookDescriptions =
     bookInfoList
       ?.filter((m: any) => !isToc(m))
