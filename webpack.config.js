@@ -9,6 +9,8 @@ module.exports = {
     kindle2roam: "./bookmarklets/kindle2roam/index.ts",
     highlight2roam: "./bookmarklets/kindle2roam/highlight2roam.ts",
     youtube2roam: "./bookmarklets/youtube2roam/index.ts",
+    amazon2obs: "./bookmarklets/amazon2obs/index.ts",
+    gyazo2obs: "./bookmarklets/gyazo2obs/index.ts",
   },
   output: {
     filename: "[name].js",
