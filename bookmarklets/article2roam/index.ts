@@ -13,7 +13,7 @@ import { copyToClipboard } from "../../libs";
     title = title.replace(new RegExp(key, "g"), replacedStrings[key]);
   }
 
-  const res = "[[Article/" + title + "]] [->](" + document.URL + ") ";
+  const res = "[[" + title + "]] [->](" + document.URL + ") ";
   console.log(res);
 
   copyToClipboard(res);

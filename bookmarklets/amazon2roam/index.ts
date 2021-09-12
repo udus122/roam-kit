@@ -52,11 +52,10 @@ import { putIndent, roamfy, copyToClipboard } from "../../libs";
   );
 
   const res = [
-    `[[Book/${title}${subtitle ? ` ${subtitle}` : ""}]]`,
-    putIndent("metadata:", 2),
-    putIndent(`Source:: ${canonicalUrl}`, 4),
-    putIndent(`ISBN:: ${asin}`, 4),
-    putIndent(`Authors::`, 4),
+    `[[${title} ${subtitle}]]`,
+    putIndent(`Source:: ${canonicalUrl}`, 2),
+    putIndent(`ISBN:: ${asin}`, 2),
+    putIndent(`Authors::`, 2),
     ...authorsInfo.map((m: { name: string; bio: string }) =>
       [putIndent(`[[${m.name}]]`, 6), putIndent(m.bio, 8)].join("\n")
     ),
