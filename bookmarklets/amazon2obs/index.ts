@@ -1,4 +1,4 @@
-import { putIndent, roamfy, copyToClipboard } from "../../libs";
+import { copyToClipboard } from "../../libs";
 
 (async () => {
   const toDate = (YYYYMMDD: string) => {
@@ -52,23 +52,18 @@ import { putIndent, roamfy, copyToClipboard } from "../../libs";
   );
 
   const res = [
-    `[[${title} ${subtitle}]]`,
-    putIndent(`Source:: ${canonicalUrl}`, 2),
-    putIndent(`ISBN:: ${asin}`, 2),
-    putIndent(`Authors::`, 2),
-    ...authorsInfo.map((m: { name: string; bio: string }) =>
-      [putIndent(`[[${m.name}]]`, 6), putIndent(m.bio, 8)].join("\n")
-    ),
-    putIndent(`Publisher:: ${publisher}`, 4),
-    putIndent(`Published:: [[${roamfy(toDate(publishingDate))}]]`, 4),
-    putIndent(`Accessed:: [[${roamfy(new Date())}]]`, 4),
-    putIndent(`Tags:: #Book `, 4),
-    putIndent(`Notes:: `, 4),
-    putIndent(`Related:: `, 4),
-    putIndent(`Toc::`, 4),
-    ...toc.map((m: string) => putIndent(m, 6)),
-    putIndent("Descriptions::", 4),
-    ...bookDescriptions.map((m: string) => putIndent(m, 6)),
+    `${title}${subtitle ? ` ${subtitle}` : ""}`,
+    `source: ${canonicalUrl}`,
+    `asin: ${asin}`,
+    `Authors: ${authorsInfo.map((m: { name: string; bio: string }) =>
+      [m.name, m.bio].join(" ")
+    )}`,
+    ,
+    `Publisher: ${publisher}`,
+    `Published: ${toDate(publishingDate)}`,
+    `Accessed: ${new Date()}`,
+    `Toc: ${toc.map((m: string) => m).join(" ")}`,
+    `Descriptions: ${bookDescriptions.map((m: string) => m).join(" ")}`,
   ].join("\n");
 
   copyToClipboard(res);
